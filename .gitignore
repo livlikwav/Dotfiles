@@ -4,3 +4,12 @@
 
 *.[oa]
 *~
+
+# macos
+.DS_Store/
+private/
+
+# private
+backup/
+
+
