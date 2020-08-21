@@ -18,6 +18,5 @@ function update() {
 read -p "This may overwrite existing your current setting files in home dir. Are you sure? [y/n] " yn
 case $yn in
     [Yy]* ) update;; 
-    [Nn]* ) exit;;
     * ) echo "Please answer yes or no.";;
 esac
