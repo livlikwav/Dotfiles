@@ -4,19 +4,23 @@ set -o pipefail # 파이프 사용시 오류 코드(non-zero exit code)를 이�
 
 echo "Update configs by livlikwav's dotfiles ..."
 
-cd "$(dirname "${BASH_SOURCE}")";
+# set dotfiles repo path
+DOTFILES_PATH="${PWD}";
+echo DOTFILES_PATH IS "${DOTFILES_PATH}";
 
 git pull origin master;
 
 function update() {
     # vim, zsh config
-    cp ./.zshrc ~/;
-    cp ./.vimrc ~/;
+    rm ~/.zshrc;
+    rm ~/.vimrc;
+    ln -s "${DOTFILES_PATH}"/.zshrc ~/.zshrc;
+    ln -s "${DOTFILES_PATH}"/.vimrc ~/.vimrc;
 }
 
 # 프롬프트로 계속 진행할 것인지 물어본다.
 read -p "This may overwrite existing your current setting files in home dir. Are you sure? [y/n] " yn
 case $yn in
     [Yy]* ) update;; 
-    * ) echo "Please answer yes or no.";;
+    * ) echo "Not yes. close script.";;
 esac
