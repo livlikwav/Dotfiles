@@ -1,7 +1,6 @@
 # Dotfiles
 
 These are my dotfiles.
-targets macOS systems
 
 ## overview
 
@@ -22,3 +21,10 @@ chmod +x update.sh
 ./update.sh
 
 ```
+
+## Requirements
+
+- zsh
+- oh-my-zsh
+- vim
+- vim-plug
