@@ -16,6 +16,13 @@
 " :PlugDiff >> review the changes from the last :PlugUpdate
 " :PlugClean >> detect and remove undeclared plugins
 
+" Automatic installation before plug#begin call
+if empty(glob('~/.vim/autoload/plug.vim'))
+    silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
+    \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+    autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
+endif
+
 " Plugis will be downloaded under the specified directory.
 call plug#begin('~/.vim/plugged')
 
