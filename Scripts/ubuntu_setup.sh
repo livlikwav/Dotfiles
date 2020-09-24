@@ -49,4 +49,7 @@ rm D2Coding-Ver1.3.2-20180524.zip
 # Hands-On : Set default fonts in Terminal>Preferences>Profiles>Fonts
 # Hands-On : Set symbolic link from dotfiles/.zshrc
 
+# Commands : Ctrl + alt + <F1> ~ <F7> == GUI to TUI
+# Commands : Alt + <F7> == TUI to GUI
+
 
