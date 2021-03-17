@@ -5,8 +5,6 @@ set -o pipefail # 파이프 사용시 오류 코드(non-zero exit code)를 이�
 ZSH_PATH="${PWD}/zsh";
 VIM_PATH="${PWD}/vim";
 
-git pull origin master;
-
 function check_zsh() {
     echo "# Update ~/.zshrc ..."
     ORIGIN="${HOME}/.zshrc"
@@ -52,6 +50,8 @@ function check_vim() {
 }
 
 function update() {
+    git pull origin master;
+
     check_zsh
     check_vim
 }
@@ -60,18 +60,18 @@ function update() {
 greetings=("===================================" "\n"
            "livlikwav dotfiles update.sh" "\n"
            "===================================" "\n"
-           "This may overwrite existing your current setting files in home dir." "\n")
+           "This may overwrite existing your current setting files in home dir.")
 farewells=("SUCCESS" "\n"
-           "===================================" "\n")
+           "===================================")
 
 echo -e "${greetings[*]}"
-read -p "# Are you sure? [y/n] " yn
+read -p "Are you sure? [y/n] " yn
 case $yn in
     [Yy]* )
       update
-      echo "${farewells[*]}"
+      echo -e "${farewells[*]}"
       ;; 
     * )
-      echo -e "# Not yes. close script."
+      echo "Not yes. close script."
       ;;
 esac
