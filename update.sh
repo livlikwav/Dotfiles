@@ -11,11 +11,29 @@ VIM_PATH="${PWD}/vim";
 git pull origin master;
 
 function update() {
-    rm "${HOME}"/.zshrc;
-    rm "${HOME}"/.vimrc;
+    echo "Update ~/.zshrc ..."
+    ORIGIN="${HOME}"/.zshrc
+    if [ -f "${ORIGIN}" ]; then
+      rm "${ORIGIN}"
+      echo "Success to delete existing ~/.zshrc"
+    else
+      echo "~/.zshrc not exists"
+    fi
 
     ln -s "${ZSH_PATH}"/.zshrc "${HOME}"/.zshrc;
+    echo "Success to update ~/.zshrc"
+
+    echo "Update ~/.vimrc ..."
+    ORIGIN="${HOME}"/.vimrc
+    if [ -f "${ORIGIN}" ]; then
+      rm "${ORIGIN}"
+      echo "Success to delete existing ~/.vimrc"
+    else
+      echo "~/.vimrc not exists"
+    fi
+    
     ln -s "${VIM_PATH}"/.vimrc "${HOME}"/.vimrc;
+    echo "Success to update ~/.vimrc"
 }
 
 # 프롬프트로 계속 진행할 것인지 물어본다.

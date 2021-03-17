@@ -8,18 +8,18 @@ cd "${HOME}"
 mkdir -p ./dotfiles/backup 
 
 # backup zshrc
-origin="./.zshrc"
-if [ -f "${origin}" ]; then
-  cp "${origin}" ./dotfiles/backup/.zshrc
+ORIGIN="./.zshrc"
+if [ -f "${ORIGIN}" ]; then
+  cp "${ORIGIN}" ./dotfiles/backup/.zshrc
   echo "Success to backup ~/.zshrc to ~/dotfiles/backup/.zshrc"
 else
   echo ".zshrc not exists"
 fi
 
 # backup vimrc
-origin="./.vimrc"
-if [ -f "${origin}" ]; then
-  cp "${origin}" ./dotfiles/backup/.vimrc
+ORIGIN="./.vimrc"
+if [ -f "${ORIGIN}" ]; then
+  cp "${ORIGIN}" ./dotfiles/backup/.vimrc
   echo "Success to backup ~/.vimrc to ~/dotfiles/backup/.vimrc"
 else
   echo ".vimrc not exists"
