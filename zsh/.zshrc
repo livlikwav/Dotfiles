@@ -91,9 +91,7 @@ ZSH_THEME="agnoster"
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git fzf)
-
-ZSH_DISABLE_COMPFIX="true"
+plugins=(git)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -121,7 +119,3 @@ source $ZSH/oh-my-zsh.sh
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
-
-# fzf install 
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-
