@@ -1,7 +1,8 @@
-# Constants
+### ==================== .zshrc of livlikwav ====================
+## Constants
 ZSH_PATH="${HOME}/dotfiles/zsh"
 
-# Import .zshrc module files
+## Import .zshrc module files
 source_file() {
   if [ -f "$1" ]; then
     echo "Sourcing $1 for zshrc"
@@ -18,20 +19,37 @@ do
   source_file $file
 done
 
+### ==================== oh-my-zsh ====================
+export ZSH="${HOME}/.oh-my-zsh"
 
-# ==================== oh-my-zsh ====================
+ZSH_THEME="agnoster"
+
+plugins=(git)
+
+source $ZSH/oh-my-zsh.sh
+
+## Customize configs
+
+# shorted user name in prompt
+prompt_context() {
+  if [[ "$USER" != "$DEFAULT_USER" || -n "$SSH_CLIENT" ]]; then
+    prompt_segment black default "%(!.%{%F{yellow}%}.)$USER"
+  fi
+}
+
+## ==================== default oh-my-zsh .zshrc ====================
 
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
 # Path to your oh-my-zsh installation.
-export ZSH="${HOME}/.oh-my-zsh"
+
 
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
 # to know which specific one was loaded, run: echo $RANDOM_THEME
 # See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
-ZSH_THEME="agnoster"
+
 
 # Set list of themes to pick from when loading at random
 # Setting this variable when ZSH_THEME=random will cause zsh to load
@@ -91,9 +109,6 @@ ZSH_THEME="agnoster"
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git)
-
-source $ZSH/oh-my-zsh.sh
 
 # User configuration
 
