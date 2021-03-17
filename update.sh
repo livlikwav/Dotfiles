@@ -12,7 +12,7 @@ git pull origin master;
 
 function update() {
     echo "Update ~/.zshrc ..."
-    ORIGIN="${HOME}"/.zshrc
+    ORIGIN="${HOME}/.zshrc"
     if [ -f "${ORIGIN}" ]; then
       rm "${ORIGIN}"
       echo "Success to delete existing ~/.zshrc"
@@ -20,11 +20,11 @@ function update() {
       echo "~/.zshrc not exists"
     fi
 
-    ln -s "${ZSH_PATH}"/.zshrc "${HOME}"/.zshrc;
+    ln -s "${ZSH_PATH}/.zshrc" "${HOME}/.zshrc";
     echo "Success to update ~/.zshrc"
 
     echo "Update ~/.vimrc ..."
-    ORIGIN="${HOME}"/.vimrc
+    ORIGIN="${HOME}/.vimrc"
     if [ -f "${ORIGIN}" ]; then
       rm "${ORIGIN}"
       echo "Success to delete existing ~/.vimrc"
@@ -32,13 +32,22 @@ function update() {
       echo "~/.vimrc not exists"
     fi
     
-    ln -s "${VIM_PATH}"/.vimrc "${HOME}"/.vimrc;
+    ln -s "${VIM_PATH}/.vimrc" "${HOME}/.vimrc";
     echo "Success to update ~/.vimrc"
+
+    echo "Source each config files"
+    source "${HOME}/.zshrc"
+    source "${HOME}/.vimrc"
 }
 
 # 프롬프트로 계속 진행할 것인지 물어본다.
 read -p "This may overwrite existing your current setting files in home dir. Are you sure? [y/n] " yn
 case $yn in
-    [Yy]* ) update;; 
-    * ) echo "Not yes. close script.";;
+    [Yy]* )
+      update
+      echo "Finish updating config files"
+      ;; 
+    * )
+      echo "Not yes. close script."
+      ;;
 esac
