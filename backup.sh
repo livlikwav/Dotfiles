@@ -1,4 +1,4 @@
-# backup local setting files
+#!/bin/bash
 set -e # script 실행 중 에러 발생시 리턴
 set -o pipefail # 파이프 사용시 오류 코드(non-zero exit code)를 이어받는다
 
@@ -34,7 +34,7 @@ greetings=("===================================" "\n"
 farewells=("-> SUCCESS" "\n"
            "===================================")
 
-echo "${greetings[*]}"
+echo -e "${greetings[*]}"
 
 echo "-> Make backup dir"
 mkdir -p "${HOME}/dotfiles/backup"
@@ -42,6 +42,6 @@ mkdir -p "${HOME}/dotfiles/backup"
 backup_zsh
 backup_vim
 
-echo "${farewells[*]}"
+echo -e "${farewells[*]}"
 
 
