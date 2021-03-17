@@ -5,8 +5,10 @@ targets macOS systems
 
 ## overview
 
-- .vimrc
-- .zshrc
+- zsh
+  - oh-my-zsh
+- vim
+  - vim-plug
 
 ## Getting-started
 
@@ -15,10 +17,10 @@ targets macOS systems
 chmod +x backup.sh
 chmod +x update.sh
 
-" backup configs first
+# backup configs first
 ./backup.sh
 
-" copy dotfiles to ~
+# copy dotfiles to ~
 ./update.sh
 
 ```
