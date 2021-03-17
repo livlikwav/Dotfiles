@@ -50,8 +50,8 @@ function check_vim() {
 function update() {
     git pull origin master
 
-    check_zsh
     check_vim
+    check_zsh
 }
 
 # 프롬프트로 계속 진행할 것인지 물어본다.
