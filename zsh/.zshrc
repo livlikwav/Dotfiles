@@ -26,6 +26,8 @@ ZSH_THEME="agnoster"
 
 plugins=(git)
 
+ZSH_DISABLE_COMPFIX="true" # disable warnings of oh-my-zsh
+
 source $ZSH/oh-my-zsh.sh
 
 ## Customize configs
