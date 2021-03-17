@@ -64,7 +64,7 @@ greetings=("===================================" "\n"
 farewells=("SUCCESS" "\n"
            "===================================" "\n")
 
-echo "${greetings[*]}"
+echo -e "${greetings[*]}"
 read -p "# Are you sure? [y/n] " yn
 case $yn in
     [Yy]* )
@@ -72,6 +72,6 @@ case $yn in
       echo "${farewells[*]}"
       ;; 
     * )
-      echo "# Not yes. close script."
+      echo -e "# Not yes. close script."
       ;;
 esac
