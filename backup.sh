@@ -2,26 +2,46 @@
 set -e # script 실행 중 에러 발생시 리턴
 set -o pipefail # 파이프 사용시 오류 코드(non-zero exit code)를 이어받는다
 
-echo "Backup config files that already exist..."
+function backup_zsh() {
+  echo "-> Backup already existing ~/.zshrc file"
+  ORIGIN="${HOME}/.zshrc"
 
-cd "${HOME}"
-mkdir -p ./dotfiles/backup 
+  if [ -f "${ORIGIN}" ]; then
+    cp "${ORIGIN}" "${HOME}/dotfiles/backup/.zshrc"
+    echo "Success to backup: ~/dotfiles/backup/.zshrc"
+  else
+    echo ".zshrc file not exists"
+  fi
+}
 
-# backup zshrc
-ORIGIN="./.zshrc"
-if [ -f "${ORIGIN}" ]; then
-  cp "${ORIGIN}" ./dotfiles/backup/.zshrc
-  echo "Success to backup ~/.zshrc to ~/dotfiles/backup/.zshrc"
-else
-  echo ".zshrc not exists"
-fi
+function backup_vim() {
+  echo "-> Backup already existing ~/.vimrc file"
+  ORIGIN="${HOME}/.vimrc"
 
-# backup vimrc
-ORIGIN="./.vimrc"
-if [ -f "${ORIGIN}" ]; then
-  cp "${ORIGIN}" ./dotfiles/backup/.vimrc
-  echo "Success to backup ~/.vimrc to ~/dotfiles/backup/.vimrc"
-else
-  echo ".vimrc not exists"
-fi
+  if [ -f "${ORIGIN}" ]; then
+    cp "${ORIGIN}" "${HOME}/dotfiles/backup/.vimrc"
+    echo "Success to backup: ~/dotfiles/backup/.vimrc"
+  else
+    echo ".vimrc file not exists"
+  fi
+}
+
+
+IFS=''
+greetings=("===================================" "\n"
+           "livlikwav dotfiles backup.sh" "\n"
+           "===================================" "\n")
+farewells=("-> SUCCESS" "\n"
+           "===================================")
+
+echo "${greetings[*]}"
+
+echo "-> Make backup dir"
+mkdir -p "${HOME}/dotfiles/backup"
+
+backup_zsh
+backup_vim
+
+echo "${farewells[*]}"
+
 
