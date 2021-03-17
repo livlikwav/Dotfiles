@@ -1,6 +1,7 @@
-# Import .zshrc module files
+# Constants
 ZSH_PATH="${HOME}/dotfiles/zsh"
 
+# Import .zshrc module files
 source_file() {
   if [ -f "$1" ]; then
     echo "Sourcing $1 for zshrc"
@@ -24,7 +25,7 @@ done
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
 # Path to your oh-my-zsh installation.
-export ZSH="/Users/livlikwav/.oh-my-zsh"
+export ZSH="${HOME}/.oh-my-zsh"
 
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
