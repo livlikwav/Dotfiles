@@ -4,18 +4,18 @@ set -o pipefail # 파이프 사용시 오류 코드(non-zero exit code)를 이�
 
 echo "Update configs by livlikwav's dotfiles ..."
 
-# set dotfiles repo path
 DOTFILES_PATH="${PWD}";
-echo DOTFILES_PATH IS "${DOTFILES_PATH}";
+ZSH_PATH="${PWD}/zsh";
+VIM_PATH="${PWD}/vim";
 
 git pull origin master;
 
 function update() {
-    # vim, zsh config
-    rm ~/.zshrc;
-    rm ~/.vimrc;
-    ln -s "${DOTFILES_PATH}"/.zshrc ~/.zshrc;
-    ln -s "${DOTFILES_PATH}"/.vimrc ~/.vimrc;
+    rm "${HOME}"/.zshrc;
+    rm "${HOME}"/.vimrc;
+
+    ln -s "${ZSH_PATH}"/.zshrc "${HOME}"/.zshrc;
+    ln -s "${VIM_PATH}"/.vimrc "${HOME}"/.vimrc;
 }
 
 # 프롬프트로 계속 진행할 것인지 물어본다.
