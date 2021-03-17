@@ -1,4 +1,6 @@
 # Import .zshrc module files
+ZSH_PATH="${HOME}/dotfiles/zsh"
+
 source_file() {
   if [ -f "$1" ]; then
     echo "Sourcing $1 for zshrc"
@@ -8,7 +10,7 @@ source_file() {
   fi
 }
 
-files=( "$HOME/.aliases" "$HOME/.env" "$HOME/.functions" )
+files=( "${ZSH_PATH}/.aliases" "${ZSH_PATH}/.env" "${ZSH_PATH}/.functions" )
 
 for file in "${files[@]}"
 do

@@ -35,8 +35,9 @@ function update() {
     ln -s "${VIM_PATH}/.vimrc" "${HOME}/.vimrc";
     echo "Success to update ~/.vimrc"
 
-    echo "Source each config files"
+    echo "Source .zshrc ..."
     source "${HOME}/.zshrc"
+    echo "Source .vimrc ..."
     source "${HOME}/.vimrc"
 }
 
