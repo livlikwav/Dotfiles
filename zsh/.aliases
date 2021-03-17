@@ -1,0 +1,17 @@
+### GENERAL ###
+alias hs="history | grep"
+
+## MacOS ##
+alias chrome='open -a /Applications/Google\ Chrome.app'
+# alias goland='/usr/local/bin/goland'
+
+### LANGUAGE ###
+
+## Python ##
+alias python='python3'
+alias pip='pip3'
+
+### TOOLS ###
+
+## Kubernetes ##
+alias k='kubectl'

@@ -1,3 +1,23 @@
+# Import .zshrc module files
+source_file() {
+  if [ -f "$1" ]; then
+    echo "Sourcing $1 for zshrc"
+    source "$1"
+  else
+    echo "404: $1 not found."
+  fi
+}
+
+files=( "$HOME/.aliases" "$HOME/.env" "$HOME/.functions" )
+
+for file in "${files[@]}"
+do
+  source_file $file
+done
+
+
+# ==================== oh-my-zsh ====================
+
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
@@ -98,26 +118,7 @@ source $ZSH/oh-my-zsh.sh
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
-alias python='python3'
-alias pip='pip3'
-alias chrome='open -a /Applications/Google\ Chrome.app'
-
-# for goodpoopee dev
-alias flask-gpp-enter='docker exec -it gpp-flask /bin/bash'
-alias flask-gpp-logs='docker logs gpp-flask'
-alias flask-gpp-cd='cd ~/dev/swmaestro/urillbwa-1'
-alias db-gpp-enter='docker exec -it gpp-db /bin/bash'
-alias db-gpp-logs='docker logs gpp-db'
-
-# shorted user name in prompt
-prompt_context() {
-  if [[ "$USER" != "$DEFAULT_USER" || -n "$SSH_CLIENT" ]]; then
-    prompt_segment black default "%(!.%{%F{yellow}%}.)$USER"
-  fi
-}
 
 # fzf install 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
-# flutter 
- export PATH="$PATH:$HOME/Dev/SDKs/flutter/bin"
