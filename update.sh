@@ -21,11 +21,6 @@ function check_zsh() {
 
     ln -s "${ZSH_PATH}/.zshrc" "${ORIGIN}";
     echo "Success to put symlink of ~/.zshrc"
-
-    echo "-> Source ~/.zshrc ..."
-    zsh
-    source "${HOME}/.zshrc"
-    bash
 }
 
 function check_vim() {
@@ -44,14 +39,37 @@ function check_vim() {
     
     ln -s "${VIM_PATH}/.vimrc" "${ORIGIN}";
     echo "Success to put symlink of ~/.vimrc"
-    
+}
+
+function get_zsh_plugins() {
+    echo "-> Get zsh plugins ..."
+
+    ZSH_CUSTOM="${HOME}/.oh-my-zsh/custom"
+    ZSH_SYNTAX_HIGHLIGHTING="${ZSH_CUSTOM}/plugins/zsh-syntax-highlighting"
+    ZSH_AUTOSUGGESTIONS="${ZSH_CUSTOM}/plugins/zsh-autosuggestions"
+
+    if [ -d "${ZSH_SYNTAX_HIGHLIGHTING}" ]; then
+      echo "Zsh-syntax-highlighting already exists"
+    else
+      echo "Git clone zsh-syntax-highlighting"
+      git clone https://github.com/zsh-users/zsh-syntax-highlighting.git "${ZSH_SYNTAX_HIGHLIGHTING}"
+    fi
+
+    if [ -d "${ZSH_AUTOSUGGESTIONS}" ]; then
+      echo "Zsh-autosuggestions already exists"
+    else
+      echo "Git clone zsh-autosuggestions"
+      git clone https://github.com/zsh-users/zsh-autosuggestions.git "${ZSH_AUTOSUGGESTIONS}"
+    fi
 }
 
 function update() {
     git pull origin master
 
-    check_vim
     check_zsh
+    get_zsh_plugins
+
+    check_vim
 }
 
 # 프롬프트로 계속 진행할 것인지 물어본다.
@@ -60,11 +78,11 @@ greetings=("===================================" "\n"
            "livlikwav dotfiles update.sh" "\n"
            "===================================" "\n"
            "This may overwrite existing your current setting files in home dir.")
-farewells=("SUCCESS" "\n"
+farewells=("-> SUCCESS" "\n"
            "===================================")
 
 echo -e "${greetings[*]}"
-read -p "Are you sure? [y/n] " yn
+read -p "-> Are you sure? [y/n] " yn
 case $yn in
     [Yy]* )
       update

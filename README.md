@@ -7,6 +7,8 @@ targets macOS systems
 
 - zsh
   - oh-my-zsh
+    - zsh-autosuggestions
+    - zsh-syntax-highlighting
 - vim
   - vim-plug
 
