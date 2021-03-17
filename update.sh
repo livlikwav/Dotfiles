@@ -6,7 +6,7 @@ ZSH_PATH="${PWD}/zsh";
 VIM_PATH="${PWD}/vim";
 
 function check_zsh() {
-    echo "# Update ~/.zshrc ..."
+    echo "-> Update ~/.zshrc ..."
     ORIGIN="${HOME}/.zshrc"
     
     if [ -f "${ORIGIN}" ]; then
@@ -22,14 +22,14 @@ function check_zsh() {
     ln -s "${ZSH_PATH}/.zshrc" "${ORIGIN}";
     echo "Success to put symlink of ~/.zshrc"
 
+    echo "-> Source ~/.zshrc ..."
     zsh
-    echo "Source .zshrc ..."
-    source "${ORIGIN}"
+    source "${HOME}/.zshrc"
     bash
 }
 
 function check_vim() {
-    echo "# Update ~/.vimrc ..."
+    echo "-> Update ~/.vimrc ..."
     ORIGIN="${HOME}/.vimrc"
 
     if [ -f "${ORIGIN}" ]; then
@@ -45,18 +45,17 @@ function check_vim() {
     ln -s "${VIM_PATH}/.vimrc" "${ORIGIN}";
     echo "Success to put symlink of ~/.vimrc"
     
-    echo "Source .vimrc ..."
-    source "${ORIGIN}"
 }
 
 function update() {
-    git pull origin master;
+    git pull origin master
 
     check_zsh
     check_vim
 }
 
 # 프롬프트로 계속 진행할 것인지 물어본다.
+IFS=''
 greetings=("===================================" "\n"
            "livlikwav dotfiles update.sh" "\n"
            "===================================" "\n"
