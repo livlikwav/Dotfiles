@@ -6,7 +6,7 @@ ZSH_PATH="${PWD}/zsh";
 VIM_PATH="${PWD}/vim";
 
 function check_zsh() {
-    echo "-> Update ~/.zshrc ..."
+    echo -e "\n-> Update ~/.zshrc ..."
     ORIGIN="${HOME}/.zshrc"
     
     if [ -f "${ORIGIN}" ]; then
@@ -24,7 +24,7 @@ function check_zsh() {
 }
 
 function check_vim() {
-    echo "-> Update ~/.vimrc ..."
+    echo -e "\n-> Update ~/.vimrc ..."
     ORIGIN="${HOME}/.vimrc"
 
     if [ -f "${ORIGIN}" ]; then
@@ -42,7 +42,7 @@ function check_vim() {
 }
 
 function get_zsh_plugins() {
-    echo "-> Get zsh plugins ..."
+    echo -e "\n-> Get zsh plugins ..."
 
     ZSH_CUSTOM="${HOME}/.oh-my-zsh/custom"
     ZSH_SYNTAX_HIGHLIGHTING="${ZSH_CUSTOM}/plugins/zsh-syntax-highlighting"
@@ -78,7 +78,7 @@ greetings=("===================================" "\n"
            "livlikwav dotfiles update.sh" "\n"
            "===================================" "\n"
            "This may overwrite existing your current setting files in home dir.")
-farewells=("-> SUCCESS" "\n"
+farewells=("\n-> SUCCESS" "\n"
            "===================================")
 
 echo -e "${greetings[*]}"

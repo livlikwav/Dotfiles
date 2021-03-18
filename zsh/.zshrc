@@ -39,6 +39,10 @@ prompt_context() {
   fi
 }
 
+# Kubectl zsh-autocompletion
+source <(kubectl completion zsh)
+complete -F __start_kubectl k
+
 ## ==================== default oh-my-zsh .zshrc ====================
 
 # If you come from bash you might have to change your $PATH.
