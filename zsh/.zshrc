@@ -5,13 +5,14 @@ ZSH_PATH="${HOME}/dotfiles/zsh"
 ## Import .zshrc module files
 source_file() {
   if [ -f "$1" ]; then
-    echo "Sourcing $1 for zshrc"
+    # echo "Sourcing $1 for zshrc"
     source "$1"
   else
-    echo "404: $1 not found."
+    echo "Sourcing 404: $1 not found."
   fi
 }
 
+# TODO: Too slow to boot zsh because of read files
 files=( "${ZSH_PATH}/.aliases" "${ZSH_PATH}/.env" "${ZSH_PATH}/.functions" )
 
 for file in "${files[@]}"
