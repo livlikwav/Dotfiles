@@ -8,6 +8,7 @@
 # macos
 .DS_Store/
 private/
+.DS_Store
 
 # private
 backup/

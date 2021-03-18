@@ -1,7 +1,8 @@
 # Dotfiles
+![vimprincess](readme_media/vimprincess.jpg)
 
-These are my dotfiles.
-targets macOS systems
+My private dotfiles.
+target: macOS 
 
 ## overview
 
