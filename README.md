@@ -1,19 +1,42 @@
 # Dotfiles
-![vimprincess](readme_media/vimprincess.jpg)
+![vimprincess](docs/vimprincess.jpg)
 
-My private dotfiles.
-target: macOS 
+My private macOS dotfiles.
 
 ## overview
 
+- ~~brew bundle~~
+- homebrew
+  - python3
+  - golang
+- brew cask
+  - google-chrome
+  - ~~docker~~
+  - ~~visual-studio-code~~
+  - kubectl
+  - minikube
+- iterm2
+  - color-scheme
 - zsh
+  - zsh-completions
   - oh-my-zsh
     - zsh-autosuggestions
     - zsh-syntax-highlighting
+    - theme "Powerlevel10k"
+      - dev font "MesloLGS NF"
 - vim
   - vim-plug
+  - VSCode dark colorscheme
+- fzf
 
 ## Getting-started
+
+### Pre-requisite
+
+Follow [this!](./docs/guide.md)  
+-> Install packages
+
+### Update dotfiles
 
 ```bash
 
