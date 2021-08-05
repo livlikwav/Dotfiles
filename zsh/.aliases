@@ -1,9 +1,11 @@
 ### GENERAL ###
 alias hs="history | grep"
+alias c="clear"
 
 ## MacOS ##
 alias chrome='open -a /Applications/Google\ Chrome.app'
-# alias goland='/usr/local/bin/goland'
+alias goland='/usr/local/bin/goland' # TODO: generate shell script by the Toobox app in /usr/local/bin
+alias code="/Applications/Visual\ Studio\ Code.app/Contents/Resources/app/bin/code"
 
 ### LANGUAGE ###
 
