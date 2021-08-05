@@ -7,6 +7,9 @@ My private macOS dotfiles.
 
 - ~~brew bundle~~
 - homebrew
+  - git
+  - git-lfs
+  - fzf
   - python3
   - golang
 - brew cask
@@ -27,7 +30,6 @@ My private macOS dotfiles.
 - vim
   - vim-plug
   - VSCode dark colorscheme
-- fzf
 
 ## Getting-started
 

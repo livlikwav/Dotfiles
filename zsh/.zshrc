@@ -25,7 +25,7 @@ export ZSH="${HOME}/.oh-my-zsh"
 
 ZSH_THEME="agnoster"
 
-plugins=(git zsh-syntax-highlighting zsh-autosuggestions)
+plugins=(git fzf zsh-syntax-highlighting zsh-autosuggestions)
 
 ZSH_DISABLE_COMPFIX="true" # disable warnings of oh-my-zsh
 

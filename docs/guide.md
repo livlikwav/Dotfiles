@@ -6,7 +6,7 @@
 `brew bundle`을 통해 다운받을 것들을 먼저 다 다운받고,  
 `git clone`은 쉘 스크립트로 수행하고,  
 준비해놓은 `zshrc`와 `vimrc`를 업데이트하면 된다.  
-언제 한 번 시간내서 구현하기.
+언제 한 번 시간내서 구현하기. <!-- https://velog.io/@iamchanii/Brewfile%EC%9D%84-%EC%9D%B4%EC%9A%A9%ED%95%B4%EC%84%9C-%ED%8C%80-%EA%B0%9C%EB%B0%9C-%ED%99%98%EA%B2%BD-%EB%A7%8C%EB%93%A4%EA%B8%B0 -->
 
 ## Step-by-step
 
@@ -29,7 +29,6 @@ brew doctor
 
 ```zsh
 brew install git # not Apple-Git. Install newest version
-
 brew install git-lfs # Git Large File Storage for managing large binary
 
 # git config --global
@@ -42,7 +41,9 @@ git config --global core.quotepath false
 ### 3. Brew packages
 
 ```zsh
-brew install python3 golang
+brew install python3
+brew install golang
+brew install fzf # fuzzy finder
 
 brew tap "homebrew/cask"
 
@@ -102,16 +103,6 @@ git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-$
 p10k configure # if you finish install p10k, install wizard is automatically started
 ```
 
-### 9. Install fzf
-
-```zsh
-brew install fzf
-```
-
-- `^` + `T`: 하위 디렉토리 파일 검색
-- `^` + `R`: 히스토리 검색
-- `esc` + `C`: 하위 디렉토리 검색 후 이동
-- `esc`: 취소
 
 ## Description
 
@@ -119,3 +110,10 @@ brew install fzf
 
 tap은 Homebrew 내의 서드 파티 저장소를 말한다.
 Homebrew 내의 기본 저장소는 `Formulae` 이다.
+
+### fzf guide
+
+- `^` + `T`: 하위 디렉토리 파일 검색
+- `^` + `R`: 히스토리 검색
+- `esc` + `C`: 하위 디렉토리 검색 후 이동
+- `esc`: 취소
