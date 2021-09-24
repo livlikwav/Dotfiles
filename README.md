@@ -12,6 +12,8 @@ My private macOS dotfiles.
   - fzf
   - python3
   - golang
+  - kubectx
+  - k9s
 - brew cask
   - google-chrome
   - ~~docker~~

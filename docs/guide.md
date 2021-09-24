@@ -49,9 +49,13 @@ brew tap "homebrew/cask"
 
 brew cask install google-chrome
 brew cask install visual-studio-code
+
+# k8s
 brew cask install docker
 brew cask install kubectl
 brew cask install minikube
+brew install derailed/k9s/k9s
+brew install kubectx
 ```
 
 ### 4. Install Iterm2 by brew(brew bundle)
