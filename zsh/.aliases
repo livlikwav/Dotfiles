@@ -17,3 +17,7 @@ alias pip='pip3'
 
 ## Kubernetes ##
 alias k='kubectl'
+
+### k9s ###
+alias kx='kubectx'
+alias ks='kubens'
