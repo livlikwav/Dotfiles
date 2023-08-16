@@ -7,7 +7,8 @@ fi
 
 ### ==================== .zshrc of livlikwav ====================
 ## Constants
-ZSH_PATH="${HOME}/dotfiles/zsh"
+DOTFILES_PATH="${HOME}/Dotfiles"
+ZSH_PATH="${DOTFILES_PATH}/zsh"
 
 ## Import .zshrc module files
 source_file() {
