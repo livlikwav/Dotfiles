@@ -8,7 +8,7 @@ alias goland='/usr/local/bin/goland' # TODO: generate shell script by the Toobox
 alias code="/Applications/Visual\ Studio\ Code.app/Contents/Resources/app/bin/code"
 
 ## Personal
-alias haengbok="python ~/Principles/main.py"
+alias principles="python ~/Principles/main.py"
 
 ### LANGUAGE
 
