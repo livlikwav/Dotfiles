@@ -1,0 +1,1 @@
+/Users/livlikwav/Dotfiles/AGENTS.md
