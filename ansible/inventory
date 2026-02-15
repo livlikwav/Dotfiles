@@ -1,0 +1,5 @@
+# Ansible Inventory for Dotfiles
+# localhost만 사용 (원격 서버 없음)
+
+[local]
+localhost ansible_connection=local

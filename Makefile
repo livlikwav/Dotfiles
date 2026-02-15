@@ -1,5 +1,8 @@
 # Dotfiles Management Makefile
 
+# Ansible configuration
+export ANSIBLE_CONFIG := $(PWD)/ansible/ansible.cfg
+
 .PHONY: help doctor doctor-pyenv doctor-pipx doctor-ansible configs binaries all hammerspoon
 
 # Default target
