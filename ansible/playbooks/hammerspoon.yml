@@ -1,0 +1,9 @@
+---
+- name: Setup Hammerspoon configuration
+  hosts: localhost
+  connection: local
+  gather_facts: yes
+
+  tasks:
+    - name: Include hammerspoon tasks
+      include_tasks: ../tasks/hammerspoon.yml

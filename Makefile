@@ -12,7 +12,7 @@ help:
 # Setup Hammerspoon configuration
 hammerspoon:
 	@echo "Setting up Hammerspoon configuration..."
-	ansible-playbook ansible/hammerspoon.yml
+	ansible-playbook ansible/playbooks/hammerspoon.yml
 
 # Check if Ansible is installed
 ansible-check:

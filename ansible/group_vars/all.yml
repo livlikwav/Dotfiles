@@ -1,0 +1,4 @@
+---
+# Common variables for all playbooks
+dotfiles_dir: "{{ ansible_env.HOME }}/Dotfiles"
+hammerspoon_config_dir: "{{ ansible_env.HOME }}/.hammerspoon"

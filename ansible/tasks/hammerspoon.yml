@@ -1,0 +1,29 @@
+---
+- name: Create .hammerspoon directory if it doesn't exist
+  file:
+    path: "{{ hammerspoon_config_dir }}"
+    state: directory
+    mode: '0755'
+
+- name: Remove existing init.lua if it exists (to avoid conflicts)
+  file:
+    path: "{{ hammerspoon_config_dir }}/init.lua"
+    state: absent
+
+- name: Create symbolic link for hammerspoon init.lua
+  file:
+    src: "{{ dotfiles_dir }}/hammerspoon/init.lua"
+    dest: "{{ hammerspoon_config_dir }}/init.lua"
+    state: link
+    force: yes
+    follow: false
+
+- name: Verify symbolic link was created
+  stat:
+    path: "{{ hammerspoon_config_dir }}/init.lua"
+  register: hammerspoon_link
+
+- name: Display result
+  debug:
+    msg: "Hammerspoon configuration linked successfully: {{ hammerspoon_link.stat.islnk }}"
+  when: hammerspoon_link.stat.exists
