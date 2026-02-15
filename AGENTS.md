@@ -36,3 +36,35 @@ ansible/
 - 모든 작업은 `make` 명령어 사용 (레거시 `.sh` 삭제됨)
 - 저장소는 반드시 `${HOME}/Dotfiles` 경로에 위치
 - Ansible 플레이북은 멱등성 보장 (여러 번 실행 안전)
+
+## 의존성
+
+**설치 스택**: Homebrew → pyenv → pipx → Ansible
+
+### 새 머신 설정
+```bash
+# 1. 저장소 클론
+git clone <repo-url> ~/Dotfiles
+cd ~/Dotfiles
+
+# 2. 부트스트랩 (Homebrew + pyenv + pipx + Ansible)
+./bootstrap.sh
+
+# 3. 터미널 재시작
+exec zsh
+
+# 4. Dotfiles 설정
+make update
+
+# 5. Health check
+make doctor
+```
+
+### 기존 머신 업데이트
+```bash
+# Dotfiles 업데이트
+make update
+
+# 또는 백업 포함
+make all
+```
