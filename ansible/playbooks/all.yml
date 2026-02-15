@@ -1,6 +1,6 @@
 ---
-- name: Backup current dotfiles
-  import_playbook: backup.yml
+- name: Install binary packages
+  import_playbook: binaries.yml
 
-- name: Update dotfiles
-  import_playbook: update.yml
+- name: Configure dotfiles
+  import_playbook: configs.yml

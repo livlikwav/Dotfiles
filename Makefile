@@ -1,6 +1,6 @@
 # Dotfiles Management Makefile
 
-.PHONY: help doctor doctor-pyenv doctor-pipx doctor-ansible backup update all hammerspoon setup brew-install
+.PHONY: help doctor doctor-pyenv doctor-pipx doctor-ansible configs binaries all hammerspoon
 
 # Default target
 help:
@@ -11,11 +11,9 @@ help:
 	@echo ""
 	@echo "Regular commands:"
 	@echo "  make doctor         - Run all health checks"
-	@echo "  make backup         - Backup current ~/.zshrc and ~/.vimrc to backup/"
-	@echo "  make update         - Pull latest and setup dotfiles (interactive)"
-	@echo "  make all            - Backup then update (dotfiles only)"
-	@echo "  make setup          - Install from Brewfile + configure Ghostty"
-	@echo "  make brew-install   - Install packages from Brewfile"
+	@echo "  make configs        - Configure dotfiles (zsh, vim, hammerspoon)"
+	@echo "  make binaries       - Install binary packages from Brewfile"
+	@echo "  make all            - Install binaries + configure (complete setup)"
 	@echo "  make hammerspoon    - Setup Hammerspoon configuration (symbolic link)"
 	@echo "  make help           - Show this help message"
 
@@ -36,32 +34,22 @@ doctor-ansible:
 	@which ansible-playbook > /dev/null || (echo "✗ Ansible is not installed. Install with: pipx install --include-deps ansible" && exit 1)
 	@echo "✓ Ansible is installed"
 
-# Backup current dotfiles
-backup: doctor
-	@echo "Backing up current dotfiles..."
-	ansible-playbook ansible/playbooks/backup.yml
+# Configure dotfiles
+configs: doctor
+	@echo "Configuring dotfiles..."
+	ansible-playbook ansible/playbooks/configs.yml
 
-# Update dotfiles
-update: doctor
-	@echo "Updating dotfiles..."
-	ansible-playbook ansible/playbooks/update.yml
+# Install binary packages
+binaries: doctor
+	@echo "Installing binary packages..."
+	ansible-playbook ansible/playbooks/binaries.yml
 
-# Backup and update
+# Complete setup (binaries + configs)
 all: doctor
-	@echo "Running full backup and update..."
+	@echo "Running complete setup..."
 	ansible-playbook ansible/playbooks/all.yml
 
 # Setup Hammerspoon configuration
 hammerspoon: doctor
 	@echo "Setting up Hammerspoon configuration..."
 	ansible-playbook ansible/playbooks/hammerspoon.yml
-
-# Setup additional tools (brew install + Ghostty config)
-setup: doctor
-	@echo "Setting up additional tools..."
-	ansible-playbook ansible/playbooks/setup.yml
-
-# Install packages from Brewfile
-brew-install: doctor
-	@echo "Installing packages from Brewfile..."
-	ansible-playbook ansible/playbooks/setup.yml --tags brew-install

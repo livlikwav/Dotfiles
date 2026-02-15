@@ -27,13 +27,13 @@ ansible/
 │   ├── vim.yml           # vim 설정
 │   ├── ghostty.yml       # Ghostty 설정
 │   ├── brew-install.yml  # Brewfile로 패키지 설치
-│   ├── backup.yml        # 백업
+│   ├── git_pull.yml      # Git pull
 │   └── hammerspoon.yml   # Hammerspoon
 └── playbooks/            # 진입점
-    ├── update.yml        # Dotfiles 업데이트
-    ├── setup.yml         # Brewfile 설치 + Ghostty 설정
-    ├── backup.yml        # 백업
-    └── all.yml           # 백업 + 업데이트
+    ├── configs.yml       # Dotfiles 설정 (zsh, vim, ghostty)
+    ├── binaries.yml      # 패키지 설치 (Brewfile)
+    ├── all.yml           # binaries + configs
+    └── hammerspoon.yml   # Hammerspoon
 ```
 
 **Zsh 모듈**: `zsh/.zshrc` → `.aliases`, `.env`, `.functions` 소싱
@@ -63,8 +63,8 @@ cd ~/Dotfiles
 # 3. 터미널 재시작
 exec zsh
 
-# 4. Dotfiles 설정
-make update
+# 4. 전체 설정 (패키지 + Dotfiles)
+make all
 
 # 5. Health check
 make doctor
@@ -72,9 +72,12 @@ make doctor
 
 ### 기존 머신 업데이트
 ```bash
-# Dotfiles 업데이트
-make update
+# Dotfiles만 업데이트
+make configs
 
-# 또는 백업 포함
+# 패키지만 설치
+make binaries
+
+# 전체
 make all
 ```

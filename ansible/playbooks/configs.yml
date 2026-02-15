@@ -1,5 +1,5 @@
 ---
-- name: Update dotfiles
+- name: Configure dotfiles
   hosts: localhost
   connection: local
   gather_facts: yes
@@ -33,3 +33,6 @@
 
     - name: Setup vim configuration
       include_tasks: ../tasks/vim.yml
+
+    - name: Configure Ghostty terminal
+      include_tasks: ../tasks/ghostty.yml

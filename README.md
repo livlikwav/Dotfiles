@@ -43,8 +43,8 @@ cd ~/Dotfiles
 # 3. 터미널 재시작
 exec zsh
 
-# 4. Dotfiles 설정 (oh-my-zsh, powerlevel10k, vim 등)
-make update
+# 4. 전체 설정 (패키지 + Dotfiles)
+make all
 
 # 5. 확인
 make doctor
@@ -55,10 +55,13 @@ make doctor
 ```bash
 cd ~/Dotfiles
 
-# Git pull + dotfiles 업데이트
-make update
+# Dotfiles 설정만
+make configs
 
-# 또는 백업 포함
+# 패키지 설치만
+make binaries
+
+# 전체
 make all
 ```
 
@@ -67,10 +70,9 @@ make all
 ```bash
 make help           # 사용 가능한 명령어 확인
 make doctor         # 모든 의존성 확인
-make backup         # 현재 설정 백업
-make update         # Dotfiles 업데이트 (대화형)
-make all            # 백업 + 업데이트
-make hammerspoon    # Hammerspoon 설정
+make configs        # Dotfiles 설정 (zsh, vim, hammerspoon)
+make binaries       # 패키지 설치 (Brewfile)
+make all            # 전체 설정 (binaries + configs)
 ```
 
 ## 구조

@@ -1,9 +1,0 @@
----
-- name: Backup current dotfiles
-  hosts: localhost
-  connection: local
-  gather_facts: yes
-
-  tasks:
-    - name: Include backup tasks
-      include_tasks: ../tasks/backup.yml
