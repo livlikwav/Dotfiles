@@ -1,4 +1,20 @@
 ---
+# oh-my-zsh installation
+# Reference: https://github.com/ohmyzsh/ohmyzsh?tab=readme-ov-file#basic-installation
+- name: Install oh-my-zsh
+  shell: sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended
+  args:
+    creates: "{{ ansible_env.HOME }}/.oh-my-zsh"
+
+# Powerlevel10k theme installation
+# Reference: https://github.com/romkatv/powerlevel10k?tab=readme-ov-file#oh-my-zsh
+- name: Install Powerlevel10k theme
+  git:
+    repo: "https://github.com/romkatv/powerlevel10k.git"
+    dest: "{{ oh_my_zsh_custom }}/themes/powerlevel10k"
+    depth: 1
+    version: HEAD
+
 - name: Add source line to ~/.zshrc (creates file if not exists)
   lineinfile:
     path: "{{ ansible_env.HOME }}/.zshrc"
