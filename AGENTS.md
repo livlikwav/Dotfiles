@@ -9,9 +9,9 @@ livlikwav의 개인 macOS dotfiles. Ansible로 관리, source 방식으로 배�
 
 ## 아키텍처
 
-**배포 방식** (Source 기반):
-- `~/.zshrc`와 `~/.vimrc` 상단에 `source ~/Dotfiles/...` 추가
-- Hammerspoon만 심볼릭 링크 사용
+**배포 방식**:
+- **Source**: `~/.zshrc`, `~/.vimrc` 상단에 `source ~/Dotfiles/...` 추가
+- **심볼릭 링크**: Ghostty, Hammerspoon
 
 **설계 이유**:
 - 머신마다 변경사항을 모두 추적하기 어려움

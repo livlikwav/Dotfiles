@@ -3,16 +3,33 @@
 # Reference: https://ghostty.org/docs/install/binary#homebrew
 # Note: Ghostty is installed via Brewfile (brew bundle install)
 
-- name: Create Ghostty config directory
+- name: Create Ghostty config directory (macOS)
   file:
-    path: "{{ ansible_env.HOME }}/.config/ghostty"
+    path: "{{ ansible_env.HOME }}/Library/Application Support/com.mitchellh.ghostty"
     state: directory
     mode: '0755'
 
-- name: Display Ghostty configuration guide
-  debug:
-    msg: |
-      ✓ Ghostty config directory created
+- name: Check if Ghostty config file exists
+  stat:
+    path: "{{ ansible_env.HOME }}/Library/Application Support/com.mitchellh.ghostty/config"
+  register: ghostty_config
 
-      Configure font in ~/.config/ghostty/config:
-      font-family = "MesloLGS NF"
+- name: Backup existing Ghostty config
+  copy:
+    src: "{{ ansible_env.HOME }}/Library/Application Support/com.mitchellh.ghostty/config"
+    dest: "{{ ansible_env.HOME }}/Library/Application Support/com.mitchellh.ghostty/config.backup"
+    remote_src: yes
+  when: ghostty_config.stat.exists and not ghostty_config.stat.islnk
+
+- name: Remove existing Ghostty config if not a symlink
+  file:
+    path: "{{ ansible_env.HOME }}/Library/Application Support/com.mitchellh.ghostty/config"
+    state: absent
+  when: ghostty_config.stat.exists and not ghostty_config.stat.islnk
+
+- name: Create symlink for Ghostty config
+  file:
+    src: "{{ dotfiles_dir }}/ghostty/config"
+    dest: "{{ ansible_env.HOME }}/Library/Application Support/com.mitchellh.ghostty/config"
+    state: link
+    force: yes

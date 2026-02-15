@@ -95,16 +95,21 @@ Dotfiles/
 ├── vim/
 │   ├── .vimrc             # Vim 설정
 │   └── README.md
+├── ghostty/
+│   └── config             # Ghostty 설정
 └── hammerspoon/
     └── init.lua           # Hammerspoon 설정
 ```
 
 ## 배포 방식
 
-**Source 기반**:
+**Source 기반** (zsh, vim):
 - `~/.zshrc` 상단에 `source ~/Dotfiles/zsh/.zshrc` 추가
 - `~/.vimrc` 상단에 `source ~/Dotfiles/vim/.vimrc` 추가
-- Hammerspoon만 심볼릭 링크 사용
+
+**심볼릭 링크** (ghostty, hammerspoon):
+- `~/Library/Application Support/com.mitchellh.ghostty/config` → `~/Dotfiles/ghostty/config`
+- `~/.hammerspoon/` → `~/Dotfiles/hammerspoon/`
 
 **장점**:
 - 머신별 로컬 설정 유지 가능
