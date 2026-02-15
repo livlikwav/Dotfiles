@@ -1,0 +1,35 @@
+---
+- name: Update dotfiles
+  hosts: localhost
+  connection: local
+  gather_facts: yes
+
+  vars:
+    skip_confirmation: false
+
+  tasks:
+    - name: Warning message
+      debug:
+        msg: "This may overwrite existing setting files in your home directory."
+      when: not skip_confirmation
+
+    - name: Confirm before proceeding
+      pause:
+        prompt: "Are you sure you want to continue? (yes/no)"
+      register: confirm
+      when: not skip_confirmation
+
+    - name: Abort if not confirmed
+      meta: end_play
+      when:
+        - not skip_confirmation
+        - confirm.user_input | default('no') | lower not in ['yes', 'y']
+
+    - name: Pull latest changes
+      include_tasks: ../tasks/git_pull.yml
+
+    - name: Setup zsh configuration
+      include_tasks: ../tasks/zsh.yml
+
+    - name: Setup vim configuration
+      include_tasks: ../tasks/vim.yml

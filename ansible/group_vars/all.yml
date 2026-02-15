@@ -2,3 +2,16 @@
 # Common variables for all playbooks
 dotfiles_dir: "{{ ansible_env.HOME }}/Dotfiles"
 hammerspoon_config_dir: "{{ ansible_env.HOME }}/.hammerspoon"
+
+# Backup and dotfiles paths
+backup_dir: "{{ dotfiles_dir }}/backup"
+zsh_dir: "{{ dotfiles_dir }}/zsh"
+vim_dir: "{{ dotfiles_dir }}/vim"
+oh_my_zsh_custom: "{{ ansible_env.HOME }}/.oh-my-zsh/custom"
+
+# Zsh plugins
+zsh_plugins:
+  - name: zsh-syntax-highlighting
+    repo: "https://github.com/zsh-users/zsh-syntax-highlighting.git"
+  - name: zsh-autosuggestions
+    repo: "https://github.com/zsh-users/zsh-autosuggestions.git"

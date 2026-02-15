@@ -1,0 +1,38 @@
+---
+- name: Create backup directory
+  file:
+    path: "{{ backup_dir }}"
+    state: directory
+    mode: '0755'
+
+- name: Check if ~/.zshrc exists
+  stat:
+    path: "{{ ansible_env.HOME }}/.zshrc"
+  register: zshrc_stat
+
+- name: Backup ~/.zshrc
+  copy:
+    src: "{{ ansible_env.HOME }}/.zshrc"
+    dest: "{{ backup_dir }}/.zshrc"
+    remote_src: yes
+  when: zshrc_stat.stat.exists
+
+- name: Display .zshrc backup result
+  debug:
+    msg: "{{ '.zshrc backed up successfully' if zshrc_stat.stat.exists else '.zshrc file not exists' }}"
+
+- name: Check if ~/.vimrc exists
+  stat:
+    path: "{{ ansible_env.HOME }}/.vimrc"
+  register: vimrc_stat
+
+- name: Backup ~/.vimrc
+  copy:
+    src: "{{ ansible_env.HOME }}/.vimrc"
+    dest: "{{ backup_dir }}/.vimrc"
+    remote_src: yes
+  when: vimrc_stat.stat.exists
+
+- name: Display .vimrc backup result
+  debug:
+    msg: "{{ '.vimrc backed up successfully' if vimrc_stat.stat.exists else '.vimrc file not exists' }}"

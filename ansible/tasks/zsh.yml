@@ -1,0 +1,33 @@
+---
+- name: Add source line to ~/.zshrc (creates file if not exists)
+  lineinfile:
+    path: "{{ ansible_env.HOME }}/.zshrc"
+    line: 'source ~/Dotfiles/zsh/.zshrc'
+    insertbefore: BOF
+    create: yes
+    mode: '0644'
+    state: present
+
+- name: Display .zshrc configuration result
+  debug:
+    msg: ".zshrc configured to source Dotfiles/zsh/.zshrc"
+
+- name: Check if oh-my-zsh custom directory exists
+  stat:
+    path: "{{ oh_my_zsh_custom }}"
+  register: oh_my_zsh_stat
+
+- name: Clone zsh plugins
+  git:
+    repo: "{{ item.repo }}"
+    dest: "{{ oh_my_zsh_custom }}/plugins/{{ item.name }}"
+    version: HEAD
+  loop: "{{ zsh_plugins }}"
+  loop_control:
+    label: "{{ item.name }}"
+  when: oh_my_zsh_stat.stat.exists
+
+- name: Display oh-my-zsh warning if not installed
+  debug:
+    msg: "Warning: oh-my-zsh custom directory not found. Skipping plugin installation."
+  when: not oh_my_zsh_stat.stat.exists

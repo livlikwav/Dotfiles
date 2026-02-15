@@ -1,26 +1,18 @@
-### GENERAL
+# GENERAL
 alias hs="history | grep"
 alias c="clear"
 
+# OS
+
 ## MacOS
 alias chrome='open -a /Applications/Google\ Chrome.app'
-alias goland='/usr/local/bin/goland' # TODO: generate shell script by the Toobox app in /usr/local/bin
 alias code="/Applications/Visual\ Studio\ Code.app/Contents/Resources/app/bin/code"
 
-## Personal
-alias principles="python ~/Principles/main.py"
-
-### LANGUAGE
-
-## Python
-alias python='python3'
-alias pip='pip3'
-
-### TOOLS
+# TOOLS
 
 ## Kubernetes
 alias k='kubectl'
 
-# k9s
+### k9s
 alias kx='kubectx'
 alias ks='kubens'

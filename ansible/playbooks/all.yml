@@ -1,0 +1,6 @@
+---
+- name: Backup current dotfiles
+  import_playbook: backup.yml
+
+- name: Update dotfiles
+  import_playbook: update.yml
