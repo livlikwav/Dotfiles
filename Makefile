@@ -1,6 +1,6 @@
 # Dotfiles Management Makefile
 
-.PHONY: help doctor doctor-pyenv doctor-pipx doctor-ansible backup update all hammerspoon
+.PHONY: help doctor doctor-pyenv doctor-pipx doctor-ansible backup update all hammerspoon setup brew-install
 
 # Default target
 help:
@@ -14,6 +14,8 @@ help:
 	@echo "  make backup         - Backup current ~/.zshrc and ~/.vimrc to backup/"
 	@echo "  make update         - Pull latest and setup dotfiles (interactive)"
 	@echo "  make all            - Backup then update (dotfiles only)"
+	@echo "  make setup          - Install from Brewfile + configure Ghostty"
+	@echo "  make brew-install   - Install packages from Brewfile"
 	@echo "  make hammerspoon    - Setup Hammerspoon configuration (symbolic link)"
 	@echo "  make help           - Show this help message"
 
@@ -53,3 +55,13 @@ all: doctor
 hammerspoon: doctor
 	@echo "Setting up Hammerspoon configuration..."
 	ansible-playbook ansible/playbooks/hammerspoon.yml
+
+# Setup additional tools (brew install + Ghostty config)
+setup: doctor
+	@echo "Setting up additional tools..."
+	ansible-playbook ansible/playbooks/setup.yml
+
+# Install packages from Brewfile
+brew-install: doctor
+	@echo "Installing packages from Brewfile..."
+	ansible-playbook ansible/playbooks/setup.yml --tags brew-install

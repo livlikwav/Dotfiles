@@ -1,0 +1,14 @@
+---
+- name: Setup additional tools
+  hosts: localhost
+  connection: local
+  gather_facts: yes
+
+  tasks:
+    - name: Install packages from Brewfile
+      include_tasks: ../tasks/brew-install.yml
+      tags: brew-install
+
+    - name: Configure Ghostty terminal
+      include_tasks: ../tasks/ghostty.yml
+      tags: ghostty

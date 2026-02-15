@@ -1,0 +1,25 @@
+---
+# Install packages from Brewfile
+# Reference: https://github.com/Homebrew/homebrew-bundle
+
+- name: Check if Brewfile exists
+  stat:
+    path: "{{ dotfiles_dir }}/Brewfile"
+  register: brewfile_stat
+
+- name: Install packages from Brewfile
+  shell: brew bundle install --file={{ dotfiles_dir }}/Brewfile
+  args:
+    chdir: "{{ dotfiles_dir }}"
+  when: brewfile_stat.stat.exists
+  register: brew_install
+
+- name: Display brew bundle install result
+  debug:
+    msg: "✓ Packages installed from Brewfile"
+  when: brewfile_stat.stat.exists
+
+- name: Display warning if Brewfile not found
+  debug:
+    msg: "⚠ Brewfile not found at {{ dotfiles_dir }}/Brewfile"
+  when: not brewfile_stat.stat.exists

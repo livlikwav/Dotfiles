@@ -1,0 +1,18 @@
+---
+# Ghostty terminal configuration
+# Reference: https://ghostty.org/docs/install/binary#homebrew
+# Note: Ghostty is installed via Brewfile (brew bundle install)
+
+- name: Create Ghostty config directory
+  file:
+    path: "{{ ansible_env.HOME }}/.config/ghostty"
+    state: directory
+    mode: '0755'
+
+- name: Display Ghostty configuration guide
+  debug:
+    msg: |
+      ✓ Ghostty config directory created
+
+      Configure font in ~/.config/ghostty/config:
+      font-family = "MesloLGS NF"

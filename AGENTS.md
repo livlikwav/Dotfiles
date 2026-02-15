@@ -23,7 +23,17 @@ livlikwav의 개인 macOS dotfiles. Ansible로 관리, source 방식으로 배�
 ansible/
 ├── group_vars/all.yml    # 변수 (경로, 플러그인)
 ├── tasks/                # 재사용 태스크
+│   ├── zsh.yml           # zsh 설정
+│   ├── vim.yml           # vim 설정
+│   ├── ghostty.yml       # Ghostty 설정
+│   ├── brew-install.yml  # Brewfile로 패키지 설치
+│   ├── backup.yml        # 백업
+│   └── hammerspoon.yml   # Hammerspoon
 └── playbooks/            # 진입점
+    ├── update.yml        # Dotfiles 업데이트
+    ├── setup.yml         # Brewfile 설치 + Ghostty 설정
+    ├── backup.yml        # 백업
+    └── all.yml           # 백업 + 업데이트
 ```
 
 **Zsh 모듈**: `zsh/.zshrc` → `.aliases`, `.env`, `.functions` 소싱
