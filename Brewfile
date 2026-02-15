@@ -1,3 +1,4 @@
+brew "fzf"
 brew "gh"
 brew "neovim"
 brew "pipx"

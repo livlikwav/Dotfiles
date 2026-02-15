@@ -31,8 +31,10 @@ source $ZSH/oh-my-zsh.sh
 
 ### ==================== Custom Configs ====================
 # Kubectl autocompletion
-source <(kubectl completion zsh)
-complete -F __start_kubectl k
+if command -v kubectl &> /dev/null; then
+  source <(kubectl completion zsh)
+  complete -F __start_kubectl k
+fi
 
 # Powerlevel10k config
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
