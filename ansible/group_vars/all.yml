@@ -1,13 +1,13 @@
 ---
 # Common variables for all playbooks
-dotfiles_dir: "{{ ansible_env.HOME }}/Dotfiles"
-hammerspoon_config_dir: "{{ ansible_env.HOME }}/.hammerspoon"
+dotfiles_dir: "{{ ansible_facts.env.HOME }}/Dotfiles"
+hammerspoon_config_dir: "{{ ansible_facts.env.HOME }}/.hammerspoon"
 
 # Backup and dotfiles paths
 backup_dir: "{{ dotfiles_dir }}/backup"
 zsh_dir: "{{ dotfiles_dir }}/zsh"
 vim_dir: "{{ dotfiles_dir }}/vim"
-oh_my_zsh_custom: "{{ ansible_env.HOME }}/.oh-my-zsh/custom"
+oh_my_zsh_custom: "{{ ansible_facts.env.HOME }}/.oh-my-zsh/custom"
 
 # Zsh plugins
 zsh_plugins:

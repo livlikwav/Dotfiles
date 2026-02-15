@@ -4,7 +4,7 @@
 - name: Install oh-my-zsh
   shell: sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended
   args:
-    creates: "{{ ansible_env.HOME }}/.oh-my-zsh"
+    creates: "{{ ansible_facts.env.HOME }}/.oh-my-zsh"
 
 # Powerlevel10k theme installation
 # Reference: https://github.com/romkatv/powerlevel10k?tab=readme-ov-file#oh-my-zsh
@@ -17,7 +17,7 @@
 
 - name: Add source line to ~/.zshrc (creates file if not exists)
   lineinfile:
-    path: "{{ ansible_env.HOME }}/.zshrc"
+    path: "{{ ansible_facts.env.HOME }}/.zshrc"
     line: 'source ~/Dotfiles/zsh/.zshrc'
     insertbefore: BOF
     create: yes

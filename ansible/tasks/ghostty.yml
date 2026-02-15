@@ -5,31 +5,31 @@
 
 - name: Create Ghostty config directory (macOS)
   file:
-    path: "{{ ansible_env.HOME }}/Library/Application Support/com.mitchellh.ghostty"
+    path: "{{ ansible_facts.env.HOME }}/Library/Application Support/com.mitchellh.ghostty"
     state: directory
     mode: '0755'
 
 - name: Check if Ghostty config file exists
   stat:
-    path: "{{ ansible_env.HOME }}/Library/Application Support/com.mitchellh.ghostty/config"
+    path: "{{ ansible_facts.env.HOME }}/Library/Application Support/com.mitchellh.ghostty/config"
   register: ghostty_config
 
 - name: Backup existing Ghostty config
   copy:
-    src: "{{ ansible_env.HOME }}/Library/Application Support/com.mitchellh.ghostty/config"
-    dest: "{{ ansible_env.HOME }}/Library/Application Support/com.mitchellh.ghostty/config.backup"
+    src: "{{ ansible_facts.env.HOME }}/Library/Application Support/com.mitchellh.ghostty/config"
+    dest: "{{ ansible_facts.env.HOME }}/Library/Application Support/com.mitchellh.ghostty/config.backup"
     remote_src: yes
   when: ghostty_config.stat.exists and not ghostty_config.stat.islnk
 
 - name: Remove existing Ghostty config if not a symlink
   file:
-    path: "{{ ansible_env.HOME }}/Library/Application Support/com.mitchellh.ghostty/config"
+    path: "{{ ansible_facts.env.HOME }}/Library/Application Support/com.mitchellh.ghostty/config"
     state: absent
   when: ghostty_config.stat.exists and not ghostty_config.stat.islnk
 
 - name: Create symlink for Ghostty config
   file:
     src: "{{ dotfiles_dir }}/ghostty/config"
-    dest: "{{ ansible_env.HOME }}/Library/Application Support/com.mitchellh.ghostty/config"
+    dest: "{{ ansible_facts.env.HOME }}/Library/Application Support/com.mitchellh.ghostty/config"
     state: link
     force: yes

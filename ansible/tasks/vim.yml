@@ -1,7 +1,7 @@
 ---
 - name: Add source line to ~/.vimrc (creates file if not exists)
   lineinfile:
-    path: "{{ ansible_env.HOME }}/.vimrc"
+    path: "{{ ansible_facts.env.HOME }}/.vimrc"
     line: 'source ~/Dotfiles/vim/.vimrc'
     insertbefore: BOF
     create: yes

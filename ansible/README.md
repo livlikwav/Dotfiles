@@ -46,7 +46,7 @@ roles/
 - name: Create symlink for .zshrc
   file:
     src: "{{ dotfiles_dir }}/zsh/.zshrc"
-    dest: "{{ ansible_env.HOME }}/.zshrc"
+    dest: "{{ ansible_facts.env.HOME }}/.zshrc"
     state: link
 ```
 
@@ -59,8 +59,8 @@ roles/
 ```yaml
 # group_vars/all.yml
 ---
-dotfiles_dir: "{{ ansible_env.HOME }}/Dotfiles"
-backup_dir: "{{ ansible_env.HOME }}/Dotfiles/backup"
+dotfiles_dir: "{{ ansible_facts.env.HOME }}/Dotfiles"
+backup_dir: "{{ ansible_facts.env.HOME }}/Dotfiles/backup"
 ```
 
 ### 4. Tasks (태스크)
@@ -75,7 +75,7 @@ backup_dir: "{{ ansible_env.HOME }}/Dotfiles/backup"
 - name: Create symlink for .zshrc
   file:
     src: "{{ dotfiles_dir }}/zsh/.zshrc"
-    dest: "{{ ansible_env.HOME }}/.zshrc"
+    dest: "{{ ansible_facts.env.HOME }}/.zshrc"
     state: link
 ```
 
