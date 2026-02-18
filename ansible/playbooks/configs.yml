@@ -38,3 +38,6 @@
 
     - name: Configure Ghostty terminal
       include_tasks: ../tasks/ghostty.yml
+
+    - name: Setup private dotfiles
+      include_tasks: ../tasks/private.yml

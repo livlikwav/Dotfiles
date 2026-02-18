@@ -3,8 +3,11 @@
 
 # macos
 .DS_Store/
-private/
 .DS_Store
 
-# private
+# private dotfiles
+private/
+private
+
+# local files
 backup/
