@@ -1,0 +1,16 @@
+---
+# Git configuration
+- name: Add include line to ~/.gitconfig (creates file if not exists)
+  lineinfile:
+    path: "{{ ansible_facts.env.HOME }}/.gitconfig"
+    line: "[include]\n\tpath = ~/Dotfiles/git/.gitconfig"
+    insertafter: EOF
+    create: yes
+    mode: '0644'
+    state: present
+  register: gitconfig_result
+
+- name: Display git configuration result
+  debug:
+    msg: "Git config configured to include ~/Dotfiles/git/.gitconfig"
+  when: gitconfig_result.changed

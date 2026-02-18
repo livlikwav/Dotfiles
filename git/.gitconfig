@@ -1,0 +1,30 @@
+[alias]
+	# Log aliases
+	l = log --oneline
+	lg = log --oneline --graph --all
+
+	# Status
+	s = status -sb
+
+	# Branch
+	br = branch
+	co = checkout
+	cob = checkout -b
+
+	# Commit
+	c = commit
+	cm = commit -m
+	ca = commit --amend
+
+	# Diff
+	d = diff
+	ds = diff --staged
+
+	# Push/Pull
+	p = push
+	pl = pull
+
+	# Stash
+	st = stash
+	stp = stash pop
+	stl = stash list

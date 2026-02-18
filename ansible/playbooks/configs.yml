@@ -27,8 +27,8 @@
         - not skip_confirmation
         - confirm.user_input | default('no') | lower not in ['yes', 'y']
 
-    - name: Pull latest changes
-      include_tasks: ../tasks/git_pull.yml
+    - name: Update Dotfiles repository
+      include_tasks: ../tasks/update-dotfiles.yml
 
     - name: Initialize directory structure
       include_tasks: ../tasks/init-dirs.yml
@@ -44,3 +44,6 @@
 
     - name: Setup private dotfiles
       include_tasks: ../tasks/private.yml
+
+    - name: Configure git
+      include_tasks: ../tasks/git.yml
