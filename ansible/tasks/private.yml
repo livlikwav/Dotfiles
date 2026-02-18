@@ -12,14 +12,6 @@
     accept_hostkey: yes
   when: not private_repo.stat.exists
 
-- name: Pull latest changes from Dotfiles-private
-  git:
-    repo: git@github.com:livlikwav/Dotfiles-private.git
-    dest: "{{ ansible_facts.env.HOME }}/Dotfiles-private"
-    version: main
-    update: yes
-  when: private_repo.stat.exists
-
 - name: Create symlink to Dotfiles/private
   file:
     src: "{{ ansible_facts.env.HOME }}/Dotfiles-private"
