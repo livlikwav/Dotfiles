@@ -7,9 +7,6 @@
     - ../group_vars/all.yml
 
   tasks:
-    - name: Update Dotfiles repository
-      include_tasks: ../tasks/update-dotfiles.yml
-
     - name: Initialize directory structure
       include_tasks: ../tasks/init-dirs.yml
 
