@@ -56,3 +56,6 @@ all: doctor
 hammerspoon: doctor
 	@echo "Setting up Hammerspoon configuration..."
 	ansible-playbook ansible/playbooks/hammerspoon.yml
+
+# Private dotfiles targets (optional, silently ignored if not present)
+-include $(HOME)/dotfiles-private/Makefile
