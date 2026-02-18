@@ -30,6 +30,9 @@
     - name: Pull latest changes
       include_tasks: ../tasks/git_pull.yml
 
+    - name: Initialize directory structure
+      include_tasks: ../tasks/init-dirs.yml
+
     - name: Setup zsh configuration
       include_tasks: ../tasks/zsh.yml
 

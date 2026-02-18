@@ -1,0 +1,18 @@
+---
+# Initialize home directory structure
+- name: Create dev directory
+  file:
+    path: "{{ ansible_facts.env.HOME }}/dev"
+    state: directory
+    mode: '0755'
+
+- name: Create dev subdirectories
+  file:
+    path: "{{ ansible_facts.env.HOME }}/dev/{{ item }}"
+    state: directory
+    mode: '0755'
+  loop:
+    - ref
+    - projects
+    - archive
+    - inbox
