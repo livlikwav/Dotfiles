@@ -7,5 +7,8 @@
     - ../group_vars/all.yml
 
   tasks:
+    - name: Update Dotfiles repository
+      include_tasks: ../tasks/update-dotfiles.yml
+
     - name: Install packages from Brewfile
       include_tasks: ../tasks/brew-install.yml

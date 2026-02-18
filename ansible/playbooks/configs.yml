@@ -6,27 +6,7 @@
   vars_files:
     - ../group_vars/all.yml
 
-  vars:
-    skip_confirmation: false
-
   tasks:
-    - name: Warning message
-      debug:
-        msg: "This may overwrite existing setting files in your home directory."
-      when: not skip_confirmation
-
-    - name: Confirm before proceeding
-      pause:
-        prompt: "Are you sure you want to continue? (yes/no)"
-      register: confirm
-      when: not skip_confirmation
-
-    - name: Abort if not confirmed
-      meta: end_play
-      when:
-        - not skip_confirmation
-        - confirm.user_input | default('no') | lower not in ['yes', 'y']
-
     - name: Update Dotfiles repository
       include_tasks: ../tasks/update-dotfiles.yml
 
