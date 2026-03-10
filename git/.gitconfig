@@ -28,3 +28,6 @@
 	st = stash
 	stp = stash pop
 	stl = stash list
+
+[push]
+	autoSetupRemote = true
