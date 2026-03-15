@@ -1,5 +1,6 @@
 brew "fzf"
 brew "gh"
+brew "ripgrep"
 brew "neovim"
 brew "pipx"
 brew "pyenv"

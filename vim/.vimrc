@@ -24,11 +24,41 @@ autocmd VimEnter * if len(filter(values(g:plugs), '!isdirectory(v:val.dir)'))
 " 플러그인이 다운로드될 디렉토리 지정
 call plug#begin('~/.vim/plugged')
 
-" 플러그인 목록
-Plug 'tomasiser/vim-code-dark' " VSCode dark 컬러스킴
+" 컬러스킴
+Plug 'tomasiser/vim-code-dark'
 
-" 플러그인 목록 종료
+" 파일 트리
+Plug 'preservim/nerdtree'
+
+" 탭/버퍼 상태바
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
+
+" 퀵 파일 오픈 (VSCode Ctrl+P)
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug 'junegunn/fzf.vim'
+
 call plug#end()
+
+" ==================================================
+" 플러그인 설정
+" ==================================================
+
+" NERDTree
+let NERDTreeShowHidden=1
+nnoremap <C-n> :NERDTreeToggle<CR>
+
+" airline
+let g:airline#extensions#tabline#enabled = 1  " 탭/버퍼 목록 표시
+let g:airline_theme='codedark'
+
+" fzf
+nnoremap <C-p> :Files<CR>
+nnoremap <C-f> :Rg<CR>
+
+" 버퍼 이동
+nnoremap ]b :bnext<CR>
+nnoremap [b :bprev<CR>
 
 " ==================================================
 " 기본 설정

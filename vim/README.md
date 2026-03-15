@@ -31,7 +31,13 @@ source ~/Dotfiles/vim/.vimrc
 - 플러그인 누락 시 자동 설치 후 재로드
 
 ### 플러그인
-- **vim-code-dark**: VSCode dark 컬러스킴
+
+| 플러그인 | 기능 | VSCode 대응 |
+|----------|------|-------------|
+| `vim-code-dark` | 컬러스킴 | Dark 테마 |
+| `preservim/nerdtree` | 파일 트리 패널 | Explorer 사이드바 |
+| `vim-airline` | 탭/버퍼 상태바 | 탭바 |
+| `junegunn/fzf.vim` | 파일/텍스트 퀵서치 | Ctrl+P, Ctrl+Shift+F |
 
 ### 기본 설정
 - 자동 들여쓰기, C 언어 들여쓰기
@@ -40,6 +46,27 @@ source ~/Dotfiles/vim/.vimrc
 - UTF-8 인코딩
 - 상태바 표시
 - 마지막 커서 위치 복원
+
+## 키바인딩
+
+| 키 | 동작 |
+|----|------|
+| `Ctrl+n` | NERDTree 파일 트리 토글 |
+| `Ctrl+p` | 파일 퀵오픈 (fzf) |
+| `Ctrl+f` | 텍스트 전체 검색 (ripgrep) |
+| `]b` | 다음 버퍼 |
+| `[b` | 이전 버퍼 |
+| `gt` / `gT` | 다음/이전 탭 (vim 기본) |
+
+### NERDTree 주요 키 (트리 패널 포커스 상태)
+| 키 | 동작 |
+|----|------|
+| `Enter` | 파일 열기 |
+| `t` | 새 탭으로 열기 |
+| `s` | 수직 분할로 열기 |
+| `i` | 수평 분할로 열기 |
+| `m` | 파일 메뉴 (생성/삭제/이동) |
+| `R` | 트리 새로고침 |
 
 ## vim-plug 명령어
 
@@ -50,6 +77,11 @@ source ~/Dotfiles/vim/.vimrc
 :PlugDiff      " 변경사항 확인
 :PlugClean     " 미사용 플러그인 제거
 ```
+
+## 의존성
+
+- `fzf`: Brewfile에 포함 (`make binaries`로 설치)
+- `ripgrep`: `Ctrl+f` (`:Rg`) 사용 시 필요
 
 ## 플러그인 추가
 
