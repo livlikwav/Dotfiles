@@ -1,1 +1,2 @@
-/Users/livlikwav/Dotfiles/AGENTS.md
+@AGENTS.md
+
