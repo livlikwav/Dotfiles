@@ -7,7 +7,7 @@ PRIVATE_MAKEFILE := $(HOME)/dotfiles-private/Makefile
 
 export ANSIBLE_CONFIG := $(DOTFILES_DIR)/ansible/ansible.cfg
 
-.PHONY: help doctor doctor-pyenv doctor-pipx doctor-ansible configs binaries all hammerspoon
+.PHONY: help doctor doctor-pyenv doctor-pipx doctor-ansible configs binaries all hammerspoon nvim
 
 # Default target
 help:
@@ -22,6 +22,7 @@ help:
 	@echo "  make binaries       - Install binary packages from Brewfile"
 	@echo "  make all            - Install binaries + configure (complete setup)"
 	@echo "  make hammerspoon    - Setup Hammerspoon configuration (symbolic link)"
+	@echo "  make nvim           - Setup neovim configuration (symbolic link)"
 	@echo "  make help           - Show this help message"
 	@[ -f $(PRIVATE_MAKEFILE) ] && $(MAKE) --no-print-directory -f $(PRIVATE_MAKEFILE) help-private || true
 
@@ -60,6 +61,11 @@ all: doctor
 hammerspoon: doctor
 	@echo "Setting up Hammerspoon configuration..."
 	$(ANSIBLE) $(PLAYBOOK_DIR)/hammerspoon.yml
+
+# Setup neovim configuration
+nvim: doctor
+	@echo "Setting up neovim configuration..."
+	$(ANSIBLE) $(PLAYBOOK_DIR)/nvim.yml
 
 # Private dotfiles targets (optional, silently ignored if not present)
 -include $(PRIVATE_MAKEFILE)

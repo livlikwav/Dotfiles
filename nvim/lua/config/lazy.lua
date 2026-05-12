@@ -1,0 +1,2 @@
+-- lazy.nvim setup is handled in init.lua
+-- This file reserved for future lazy.nvim configuration overrides

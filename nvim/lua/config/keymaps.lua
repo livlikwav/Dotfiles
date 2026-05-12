@@ -1,0 +1,2 @@
+-- Custom keymaps (add project-specific bindings here)
+-- LazyVim default keymaps: https://www.lazyvim.org/keymaps

@@ -1,0 +1,11 @@
+---
+- name: Setup neovim configuration
+  hosts: localhost
+  connection: local
+  gather_facts: yes
+  vars_files:
+    - ../group_vars/all.yml
+
+  tasks:
+    - name: Include nvim tasks
+      include_tasks: ../tasks/nvim.yml

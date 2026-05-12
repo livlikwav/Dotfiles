@@ -1,0 +1,2 @@
+-- Custom autocmds (add project-specific autocmds here)
+-- LazyVim default autocmds: https://www.lazyvim.org/configuration/general

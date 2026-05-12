@@ -1,0 +1,41 @@
+---
+# Neovim configuration with LazyVim
+# Symlinks ~/Dotfiles/nvim → ~/.config/nvim
+# lazy.nvim + LazyVim plugins auto-install on first `nvim` launch
+
+- name: Create ~/.config directory
+  file:
+    path: "{{ ansible_facts.env.HOME }}/.config"
+    state: directory
+    mode: '0755'
+
+- name: Check if ~/.config/nvim exists
+  stat:
+    path: "{{ nvim_config_dir }}"
+  register: nvim_config
+
+- name: Backup existing ~/.config/nvim if not a symlink
+  copy:
+    src: "{{ nvim_config_dir }}"
+    dest: "{{ backup_dir }}/nvim.backup"
+    remote_src: yes
+  when: nvim_config.stat.exists and not nvim_config.stat.islnk
+
+- name: Remove existing ~/.config/nvim if not a symlink
+  file:
+    path: "{{ nvim_config_dir }}"
+    state: absent
+  when: nvim_config.stat.exists and not nvim_config.stat.islnk
+
+- name: Create symlink ~/.config/nvim → ~/Dotfiles/nvim
+  file:
+    src: "{{ nvim_dir }}"
+    dest: "{{ nvim_config_dir }}"
+    state: link
+    force: yes
+
+- name: Verify symlink
+  stat:
+    path: "{{ nvim_config_dir }}"
+  register: nvim_link
+  failed_when: not nvim_link.stat.islnk

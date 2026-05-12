@@ -7,6 +7,8 @@ hammerspoon_config_dir: "{{ ansible_facts.env.HOME }}/.hammerspoon"
 backup_dir: "{{ dotfiles_dir }}/backup"
 zsh_dir: "{{ dotfiles_dir }}/zsh"
 vim_dir: "{{ dotfiles_dir }}/vim"
+nvim_dir: "{{ dotfiles_dir }}/nvim"
+nvim_config_dir: "{{ ansible_facts.env.HOME }}/.config/nvim"
 oh_my_zsh_custom: "{{ ansible_facts.env.HOME }}/.oh-my-zsh/custom"
 
 # Zsh plugins

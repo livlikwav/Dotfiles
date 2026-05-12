@@ -16,6 +16,9 @@
     - name: Setup vim configuration
       include_tasks: ../tasks/vim.yml
 
+    - name: Setup neovim configuration
+      include_tasks: ../tasks/nvim.yml
+
     - name: Configure Ghostty terminal
       include_tasks: ../tasks/ghostty.yml
 
