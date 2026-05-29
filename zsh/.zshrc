@@ -27,6 +27,9 @@ ZSH_THEME="powerlevel10k/powerlevel10k"
 plugins=(git fzf zsh-syntax-highlighting zsh-autosuggestions)
 ZSH_DISABLE_COMPFIX="true"
 
+# Docker CLI completions (must be before oh-my-zsh to include in compinit)
+fpath=($HOME/.docker/completions $fpath)
+
 source $ZSH/oh-my-zsh.sh
 
 ### ==================== Custom Configs ====================
