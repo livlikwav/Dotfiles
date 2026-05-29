@@ -7,7 +7,7 @@ PRIVATE_MAKEFILE := $(HOME)/dotfiles-private/Makefile
 
 export ANSIBLE_CONFIG := $(DOTFILES_DIR)/ansible/ansible.cfg
 
-.PHONY: help doctor doctor-pyenv doctor-pipx doctor-ansible configs binaries all hammerspoon nvim
+.PHONY: help doctor doctor-uv doctor-ansible configs binaries all hammerspoon nvim
 
 # Default target
 help:
@@ -27,19 +27,15 @@ help:
 	@[ -f $(PRIVATE_MAKEFILE) ] && $(MAKE) --no-print-directory -f $(PRIVATE_MAKEFILE) help-private || true
 
 # Health checks
-doctor: doctor-pyenv doctor-pipx doctor-ansible
+doctor: doctor-uv doctor-ansible
 	@echo "✓ All checks passed!"
 
-doctor-pyenv:
-	@which pyenv > /dev/null || (echo "✗ pyenv is not installed. Run: ./bootstrap.sh" && exit 1)
-	@echo "✓ pyenv is installed"
-
-doctor-pipx:
-	@which pipx > /dev/null || (echo "✗ pipx is not installed. Run: ./bootstrap.sh" && exit 1)
-	@echo "✓ pipx is installed"
+doctor-uv:
+	@which uv > /dev/null || (echo "✗ uv is not installed. Run: ./bootstrap.sh" && exit 1)
+	@echo "✓ uv is installed"
 
 doctor-ansible:
-	@which ansible-playbook > /dev/null || (echo "✗ ansible-playbook is not installed. Run: pipx install --include-deps ansible" && exit 1)
+	@which ansible-playbook > /dev/null || (echo "✗ ansible-playbook is not installed. Run: uv tool install ansible" && exit 1)
 	@echo "✓ ansible-playbook is installed"
 
 # Configure dotfiles

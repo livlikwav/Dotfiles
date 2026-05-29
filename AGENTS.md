@@ -49,7 +49,7 @@ ansible/
 
 ## 의존성
 
-**설치 스택**: Homebrew → pyenv → pipx → Ansible
+**설치 스택**: Homebrew → uv → Ansible
 
 ### 새 머신 설정
 ```bash
@@ -57,7 +57,7 @@ ansible/
 git clone <repo-url> ~/Dotfiles
 cd ~/Dotfiles
 
-# 2. 부트스트랩 (Homebrew + pyenv + pipx + Ansible)
+# 2. 부트스트랩 (Homebrew + uv + Ansible)
 ./bootstrap.sh
 
 # 3. 터미널 재시작
