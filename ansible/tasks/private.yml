@@ -12,9 +12,10 @@
     accept_hostkey: yes
   when: not private_repo.stat.exists
 
-- name: Create symlink to Dotfiles/private
-  file:
-    src: "{{ ansible_facts.env.HOME }}/Dotfiles-private"
-    dest: "{{ ansible_facts.env.HOME }}/Dotfiles/private"
-    state: link
-    force: yes
+- name: Run Dotfiles-private playbooks (entrypoint: ansible/playbooks/all.yml)
+  command: ansible-playbook ansible/playbooks/all.yml
+  args:
+    chdir: "{{ ansible_facts.env.HOME }}/Dotfiles-private"
+  environment:
+    ANSIBLE_CONFIG: "{{ ansible_facts.env.HOME }}/Dotfiles-private/ansible/ansible.cfg"
+  changed_when: true

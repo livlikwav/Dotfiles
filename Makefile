@@ -3,7 +3,6 @@
 DOTFILES_DIR     := $(shell pwd)
 PLAYBOOK_DIR     := $(DOTFILES_DIR)/ansible/playbooks
 ANSIBLE          := ansible-playbook
-PRIVATE_MAKEFILE := $(HOME)/dotfiles-private/Makefile
 
 export ANSIBLE_CONFIG := $(DOTFILES_DIR)/ansible/ansible.cfg
 
@@ -24,7 +23,9 @@ help:
 	@echo "  make hammerspoon    - Setup Hammerspoon configuration (symbolic link)"
 	@echo "  make nvim           - Setup neovim configuration (symbolic link)"
 	@echo "  make help           - Show this help message"
-	@[ -f $(PRIVATE_MAKEFILE) ] && $(MAKE) --no-print-directory -f $(PRIVATE_MAKEFILE) help-private || true
+	@echo ""
+	@echo "Note: 'make configs' / 'make all' also clones and runs ~/Dotfiles-private"
+	@echo "      (see ~/Dotfiles-private/Makefile for its standalone commands)"
 
 # Health checks
 doctor: doctor-uv doctor-ansible
@@ -62,6 +63,3 @@ hammerspoon: doctor
 nvim: doctor
 	@echo "Setting up neovim configuration..."
 	$(ANSIBLE) $(PLAYBOOK_DIR)/nvim.yml
-
-# Private dotfiles targets (optional, silently ignored if not present)
--include $(PRIVATE_MAKEFILE)
